@@ -1,0 +1,6 @@
+asgiref==3.7.2
+Django==4.2.3
+django-email-verification==0.0.4
+secure-smtplib==0.1.1
+sqlparse==0.4.4
+tzdata==2023.3

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'LOG_MAIL'
+    'LOG_MAIL',
+    
 ]
 
 MIDDLEWARE = [
@@ -76,10 +78,24 @@ WSGI_APPLICATION = 'SMTP_LOG.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME' : 'turksat_2',
+        'USER' : 'postgres',
+        'PASSWORD':'1302',
+        'HOST':'127.0.0.1',
+        "PORT":'5432',
     }
 }
+
+# [Login]
+# DBType=1
+# ServerAdr=localhost
+# DbName=turksat_2
+# DbUserName=postgres
+# DbPassword=1302
+# DbServerPort=5432
+# TnsName=
+# size=0
 
 
 # Password validation
@@ -118,12 +134,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = '10.101.30.135'  # E-posta sağlayıcınıza göre ayarlayın
+EMAIL_HOST = '<EMAIL HOST>'  # E-posta sağlayıcınıza göre ayarlayın
 EMAIL_PORT = 587  # StartTLS için genellikle 587 portu kullanılır
-EMAIL_HOST_USER = 'edevletklima@turksat.com.tr'  # Gönderen e-posta adresi
-EMAIL_HOST_PASSWORD = 'Elektrik2023'  # Gönderen e-posta şifresi
-EMAIL_USE_TLS = True  # StartTLS kullanacağımızı belirtiyoruz
-
+EMAIL_HOST_USER = '<EMAIL_HOST_USER>'  # Gönderen e-posta adresi
+EMAIL_HOST_PASSWORD = '<PASSWORD>'  # Gönderen e-posta şifresi
+# EMAIL_USE_TLS = True  # StartTLS kullanacağımızı belirtiyoruz
+# EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = '<FROM_EMAIL>'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
